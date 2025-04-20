@@ -9,14 +9,14 @@
 
     <link rel="canonical" href="" />
 
-    <script src="js/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
 
     <title>
-      Innovative IT Solutions & Software Development | NewVista Enterprise
+      NewVista Enterprise
     </title>
     <meta
       name="title"
-      content="Innovative IT Solutions & Software Development | NewVista Enterprise"
+      content="NewVista Enterprise"
     />
     <meta
       name="description"
@@ -24,7 +24,7 @@
     />
     <meta
       property="og:title"
-      content="Innovative IT Solutions & Software Development | NewVista Enterprise"
+      content="NewVista Enterprise"
     />
     <meta
       property="og:description"
@@ -36,11 +36,11 @@
       var __PRODUCT_URL__ = "https://b12.io";
     </script>
 
-    <style>
+    <!-- <style>
       html {
         scroll-behavior: smooth;
       }
-    </style>
+    </style> -->
 
     <style type="text/css">
       /* latin-ext */
@@ -2664,7 +2664,7 @@
         margin: 0;
       }
       .sb-row-opt-padding-top-large {
-        padding-top: 80px;
+        padding-top: 30px;
       }
       @media (max-width: 767px) {
         .sb-row-opt-padding-top-large {
@@ -2672,7 +2672,7 @@
         }
       }
       .sb-row-opt-padding-bottom-large {
-        padding-bottom: 80px;
+        padding-bottom: 30px;
       }
       @media (max-width: 767px) {
         .sb-row-opt-padding-bottom-large {
@@ -11915,533 +11915,8 @@
                     </ul>
                   </nav>
                 </div>
-                <script>
-                  $(function () {
-                    var $parent = $(
-                        "#sb-top-nav-55f2ac39-e303-4354-b819-46d606b758c1"
-                      ),
-                      $navComponent = $parent.closest(
-                        ".sb-component-simple-top-nav"
-                      ),
-                      $nav = $parent.find(".sb-nav__list"),
-                      $navOpenBtn = $parent.find(".sb-mobile-nav-btn"),
-                      $navCloseBtn = $parent.find(".sb-nav__close"),
-                      $subNavToggleBtn = $parent.find(".sb-nav__sub-toggle"),
-                      $navigationWrapper = $("#sb-navigation"),
-                      $bannerWrapper = $("#sb-banner"),
-                      $navigationSection = $("#sb-navigation > .sb-section");
-
-                    $navigationWrapper
-                      .find(".sb-section")
-                      .css("transform", "none"); // fix for when animations are applied
-
-                    $navOpenBtn.on("click", function () {
-                      $("body").toggleClass("is-nav-menu-expanded");
-                      $navComponent.toggleClass("sb-nav--expanded");
-                    });
-
-                    $navCloseBtn.on("click", function () {
-                      $("body").toggleClass("is-nav-menu-expanded");
-                      $navComponent.toggleClass("sb-nav--expanded");
-                    });
-
-                    $subNavToggleBtn.on("click", function (e) {
-                      e.stopImmediatePropagation();
-
-                      $(this).closest("li").toggleClass("is-sub-visible");
-                    });
-
-                    $nav.on("click", ".sb-link", function () {
-                      $navComponent.removeClass("sb-nav--expanded");
-                    });
-
-                    function toggleFixedNavigation() {
-                      $navigationSection = $("#sb-navigation > .sb-section");
-
-                      // TODO: Simplify this in the future
-                      if (
-                        $(
-                          "#sb-id-55f2ac39-e303-4354-b819-46d606b758c1"
-                        ).hasClass("option-nav-fixed") ||
-                        $navigationSection.hasClass("option-nav-fixed")
-                      ) {
-                        var $bannerSection = $("#sb-banner > .sb-section");
-
-                        if ($(window).scrollTop() > 0) {
-                          $navigationWrapper.addClass("sb-nav--fixed");
-
-                          var bannerOuterHeight = 0;
-                          if (
-                            $bannerSection.length > 0 &&
-                            $("body").hasClass("is-banner-in")
-                          ) {
-                            bannerOuterHeight = $bannerSection.outerHeight();
-                            $navigationSection.css(
-                              "top",
-                              bannerOuterHeight + "px"
-                            );
-                          }
-
-                          if (
-                            !$navigationSection.hasClass("option-nav-overlay")
-                          ) {
-                            $("body").css(
-                              "padding-top",
-                              $navigationWrapper.outerHeight() +
-                                bannerOuterHeight +
-                                "px"
-                            );
-                          }
-                        } else {
-                          $navigationWrapper.removeClass("sb-nav--fixed");
-
-                          if ($bannerSection.length > 0) {
-                            $navigationSection.css("top", "0px");
-                          }
-
-                          if (
-                            $bannerSection.length > 0 &&
-                            $("body").hasClass("is-banner-in")
-                          ) {
-                            $("body").css(
-                              "padding-top",
-                              $bannerSection.outerHeight() + "px"
-                            );
-                          } else {
-                            $("body").css("padding-top", "0px");
-                          }
-                        }
-                      }
-                    }
-
-                    // Adjust Hero top padding when nav is overlayed above it
-                    function adjustHeroPadding() {
-                      if (!$navigationSection.hasClass("option-nav-overlay"))
-                        return;
-
-                      const $firstHero = $(
-                        "#sb-page-structure > section:first"
-                      );
-
-                      if (!$firstHero.hasClass("option-section-hero")) {
-                        $navigationSection.removeClass("option-nav-overlay");
-                        $("body").removeClass("has-overlay-nav");
-                      } else {
-                        const navHeight = $navigationSection.outerHeight();
-                        const topPadding = navHeight + 20; // Plus default section padding
-
-                        $firstHero.css("paddingTop", `${topPadding}px`);
-                      }
-                    }
-
-                    adjustHeroPadding();
-
-                    $(window).scroll(function () {
-                      toggleFixedNavigation();
-                    });
-
-                    $(window).resize(function () {
-                      setTimeout(function () {
-                        adjustHeroPadding();
-                        toggleFixedNavigation();
-
-                        // Properly hide banner on window resize as resizing can adjust banner's height
-                        if (
-                          !$navigationSection.hasClass("option-nav-fixed") &&
-                          $("body").hasClass("is-banner-out")
-                        ) {
-                          var $bannerSection = $("#sb-banner");
-                          $bannerSection.css(
-                            "margin-top",
-                            "-" + $bannerSection.outerHeight() + "px"
-                          );
-                        }
-                      }, 200);
-                    });
-
-                    var lastId,
-                      topMenu = $(
-                        "#sb-nav-55f2ac39-e303-4354-b819-46d606b758c1"
-                      ),
-                      topMenuHeight = $(
-                        "#sb-navigation > section"
-                      ).outerHeight(),
-                      menuItems,
-                      scrollItems,
-                      defaultActive = topMenu.find("li.active"),
-                      pagePath = window.location.pathname.split("/").pop(),
-                      menuSelector = pagePath === "" ? "index" : pagePath,
-                      scrollSpyInitialized = false;
-
-                    $(window).scroll(function () {
-                      if (!scrollSpyInitialized) {
-                        menuItems = topMenu.find(
-                          'a[href^="' + menuSelector + '#"]'
-                        );
-                        scrollItems = menuItems.map(function () {
-                          var item = $(
-                            $(this).attr("href").replace(menuSelector, "")
-                          );
-                          if (item.length > 0) {
-                            return item;
-                          }
-                        });
-
-                        scrollSpyInitialized = true;
-                      }
-
-                      // Get container scroll position
-                      var fromTop = $(this).scrollTop() + topMenuHeight;
-
-                      // Get id of current scroll item
-                      var cur = scrollItems.map(function () {
-                        if ($(this).offset().top <= fromTop) {
-                          return this;
-                        }
-                      });
-
-                      // Get the id of the current element
-                      cur = cur[cur.length - 1];
-                      var id = cur && cur.length ? cur[0].id : "";
-
-                      if (lastId !== id) {
-                        lastId = id;
-
-                        if ("" == lastId && "" == id) {
-                          defaultActive.addClass("active");
-                        } else {
-                          topMenu.find("li").removeClass("active");
-                        }
-
-                        menuItems
-                          .parent()
-                          .removeClass("active")
-                          .end()
-                          .filter("[href='" + menuSelector + "#" + id + "']")
-                          .parent()
-                          .addClass("active");
-                      }
-                    });
-
-                    function scrollSmoothlyTo(elem) {
-                      if (elem.length === 0) {
-                        return;
-                      }
-
-                      $("html, body").animate(
-                        {
-                          scrollTop:
-                            elem.offset().top - topMenuHeight + 10 + "px",
-                        },
-                        1500
-                      );
-                    }
-
-                    // smooth scroll on page load
-                    $(function () {
-                      if (targetToScrollTo) {
-                        setTimeout(function () {
-                          const hash = `#${targetToScrollTo}`;
-                          scrollSmoothlyTo($(hash));
-                          const url = new URL(window.location);
-                          url.hash = hash;
-                          history.pushState(null, null, url);
-                        }, 300);
-                      }
-                    });
-
-                    function restoreHiddenNavItems($hiddenItems, $moreBtn) {
-                      $hiddenItems.children().each(function () {
-                        var $this = $(this);
-                        $this.removeClass("sb-nav__sub-item");
-                        $("> a", $this).removeClass("sb-nav__sub-link");
-                        if ($("> a", $this).hasClass("is-btn")) {
-                          $("> a", $this)
-                            .addClass("sb-button sb-button--nav")
-                            .removeClass("is-btn sb-nav__link");
-                        }
-                        $this.insertBefore($moreBtn);
-                      });
-                    }
-
-                    // smooth scroll to section when clicking on nav items
-                    var $navLinks = $(".sb-link", $nav),
-                      pagePath = window.location.pathname.split("/").pop();
-
-                    $navLinks.on("click", function (e) {
-                      var $this = $(this),
-                        url = $this.attr("href"),
-                        hash = url.split("#")[1],
-                        targetPath = e.target.pathname.split("/").pop(),
-                        isExternal = $this.hasClass("is-external");
-
-                      if (!isExternal) {
-                        if ("index" != targetPath && targetPath != pagePath) {
-                          return;
-                        }
-
-                        if (hash) {
-                          if (
-                            pagePath == targetPath ||
-                            ("index" == targetPath && "" == pagePath)
-                          ) {
-                            e.preventDefault();
-                            scrollSmoothlyTo($("#" + hash));
-                            history.pushState(
-                              null,
-                              null,
-                              targetPath + "#" + hash
-                            );
-                          }
-                        } else {
-                          if (
-                            ("index" == targetPath && "index" == pagePath) ||
-                            ("index" == targetPath && "" == pagePath)
-                          ) {
-                            e.preventDefault();
-                            scrollSmoothlyTo($("body"));
-                            history.pushState(null, null, targetPath);
-                          }
-                        }
-                      }
-                    });
-
-                    $(".sb-top-header__brand").on("click", function (e) {
-                      if (
-                        "" == pagePath ||
-                        "index" == pagePath ||
-                        "index.html" == pagePath
-                      ) {
-                        e.preventDefault();
-
-                        history.pushState(null, null, window.location.pathname);
-
-                        $("html, body").animate(
-                          {
-                            scrollTop: 0,
-                          },
-                          1500
-                        );
-                      }
-                    });
-
-                    // hide menu items if there is no space for it
-                    var $vlinks = $nav,
-                      $hlinks = $parent.find(".sb-nav__list-hidden-links"),
-                      $moreBtn = $parent.find(".sb-nav__list-hidden"),
-                      btnWidth = $moreBtn.outerWidth(true),
-                      isMoreButtonHidden = true,
-                      numOfItems = 0,
-                      totalSpace = 0,
-                      breakWidths = [],
-                      extraSpaceForNav = 30,
-                      hasContactCTA = false,
-                      navItemsSelector = "> li:not(.sb-nav__list-hidden)";
-
-                    // Exclude the Contact CTA from nav links
-                    var $navItems = $(navItemsSelector, $vlinks);
-                    if ($navItems.last().hasClass("sb-nav__btn")) {
-                      hasContactCTA = true;
-                      navItemsSelector += ":not(:last-child)";
-                    }
-
-                    // If the last nav item is a button, swap it with the More button
-                    if (hasContactCTA) {
-                      $moreBtn.insertBefore($navItems.last());
-                    }
-
-                    function calculateNavItemsWidth() {
-                      var totalSpace = 0,
-                        numOfItems = 0,
-                        breakWidths = [];
-                      $(navItemsSelector, $vlinks).outerWidth(function (i, w) {
-                        totalSpace += $(this).outerWidth(true);
-                        numOfItems += 1;
-                        breakWidths.push(totalSpace);
-                      });
-                      return [totalSpace, numOfItems, breakWidths];
-                    }
-
-                    [totalSpace, numOfItems, breakWidths] =
-                      calculateNavItemsWidth();
-
-                    var availableSpace, numOfVisibleItems, requiredSpace;
-                    var prevAvailableSpace,
-                      prevNumOfVisibleItems,
-                      prevRequiredSpace;
-
-                    function checkAvailableSpaceForNav() {
-                      if (availableSpace < 0) {
-                        availableSpace = undefined;
-                        restoreHiddenNavItems($hlinks, $moreBtn);
-                        return;
-                      }
-                      /**
-                       * Re-calculate nav items' size if the actual width of the first item is
-                       * not equal to the calculated width
-                       */
-                      var $firstLink = $(navItemsSelector, $vlinks).first();
-                      if (
-                        $firstLink.length &&
-                        $firstLink.outerWidth(true) !== breakWidths[0]
-                      ) {
-                        // Delete all dropdown nav items to re-calculate it properly
-                        restoreHiddenNavItems($hlinks, $moreBtn);
-                        var sizes = calculateNavItemsWidth();
-                        totalSpace = sizes[0];
-                        numOfItems = sizes[1];
-                        breakWidths = sizes[2];
-                        numOfVisibleItems = sizes[1];
-                        checkAvailableSpaceForNav();
-                      }
-                      var $lastLink = $(navItemsSelector, $vlinks).last();
-                      /**
-                       * If the Contact link is a button, we should subtract its width from
-                       * availableSpace value.
-                       */
-                      var contactButtonWidth = hasContactCTA
-                        ? $("> li.sb-nav__btn:last-of-type", $vlinks)
-                            .last()
-                            .outerWidth(true)
-                        : 0;
-                      /**
-                       * We should not consider the More button width if it's hidden.
-                       */
-                      var moreBtnWidth = isMoreButtonHidden ? 0 : btnWidth;
-                      availableSpace =
-                        $vlinks.width() -
-                        moreBtnWidth -
-                        extraSpaceForNav -
-                        contactButtonWidth;
-                      numOfVisibleItems = $(navItemsSelector, $vlinks).length;
-                      requiredSpace = breakWidths[numOfVisibleItems - 1];
-
-                      var $hiddenNavItems = numOfItems - numOfVisibleItems;
-
-                      // If there is the only item in the More dropdown, add one more link there
-                      if (
-                        requiredSpace > availableSpace ||
-                        $hiddenNavItems === 1
-                      ) {
-                        $lastLink.addClass("sb-nav__sub-item");
-                        $("> a", $lastLink).addClass("sb-nav__sub-link");
-
-                        if ($("> a", $lastLink).hasClass("sb-button")) {
-                          $("> a", $lastLink)
-                            .removeClass("sb-button sb-button--nav")
-                            .addClass("is-btn sb-nav__link");
-                        }
-
-                        $lastLink.prependTo($hlinks);
-                        numOfVisibleItems -= 1;
-                        checkAvailableSpaceForNav();
-                        // There is more than enough space
-                      } else if (
-                        availableSpace > breakWidths[numOfVisibleItems] &&
-                        $hiddenNavItems !== 2
-                      ) {
-                        var $firstLink = $hlinks.children().first();
-
-                        $firstLink.removeClass("sb-nav__sub-item");
-                        $("> a", $firstLink).removeClass("sb-nav__sub-link");
-
-                        if ($("> a", $firstLink).hasClass("is-btn")) {
-                          $("> a", $firstLink)
-                            .addClass("sb-button sb-button--nav")
-                            .removeClass("is-btn sb-nav__link");
-                        }
-
-                        $firstLink.insertBefore($moreBtn);
-                        numOfVisibleItems += 1;
-                      }
-                      // Update the button accordingly
-                      if (numOfVisibleItems === numOfItems) {
-                        $moreBtn.addClass("is-hidden");
-                        isMoreButtonHidden = true;
-                      } else {
-                        $moreBtn.removeClass("is-hidden");
-                        if (isMoreButtonHidden) {
-                          isMoreButtonHidden = false;
-                          checkAvailableSpaceForNav();
-                        }
-                      }
-
-                      if (
-                        prevAvailableSpace != availableSpace &&
-                        prevNumOfVisibleItems != numOfVisibleItems &&
-                        prevRequiredSpace != requiredSpace
-                      ) {
-                        prevAvailableSpace = availableSpace;
-                        prevNumOfVisibleItems = numOfVisibleItems;
-                        prevRequiredSpace = requiredSpace;
-                        setTimeout(checkAvailableSpaceForNav, 500);
-                      }
-                    }
-
-                    // if we are on mobile and option-nav-mobile-static is present
-                    var mq = function (query, callback, usePolyfill) {
-                      var host = {};
-                      var isMatchMediaSupported =
-                        !!(window && window.matchMedia) && !usePolyfill;
-
-                      if (isMatchMediaSupported) {
-                        var res = window.matchMedia(query);
-
-                        callback.apply(host, [res.matches, res.media]);
-
-                        res.addListener(function (changed) {
-                          callback.apply(host, [
-                            changed.matches,
-                            changed.media,
-                          ]);
-                        });
-                      }
-                    };
-
-                    mq("(min-width: 1033px)", function (match) {
-                      if (match) {
-                        $(window).on("resize.hideNavItems", function () {
-                          checkAvailableSpaceForNav();
-                        });
-                        checkAvailableSpaceForNav();
-                      } else {
-                        $(window).off("resize.hideNavItems");
-                        $hlinks.children().appendTo($vlinks);
-                        $("> li:not(.sb-nav__list-hidden) > a.is-btn", $vlinks)
-                          .addClass("sb-button sb-button--nav")
-                          .removeClass("is-btn sb-nav__link");
-                        // Reset ex-hidden items styles
-                        $("> li.sb-nav__item.sb-nav__sub-item", $nav).each(
-                          (index, item) => {
-                            $(item).removeClass("sb-nav__sub-item");
-                            $(".sb-link.sb-nav__sub-link", $(item)).removeClass(
-                              "sb-nav__sub-link"
-                            );
-                          }
-                        );
-                        // Add all CTAs to the bottom of the nav
-                        var $ctaLinks = $("> li.sb-nav__btn", $vlinks);
-                        $ctaLinks.remove();
-                        $vlinks.append($ctaLinks);
-                      }
-                    });
-
-                    mq("(max-width: 767px)", function (match) {
-                      if (
-                        $(
-                          "#sb-id-55f2ac39-e303-4354-b819-46d606b758c1"
-                        ).hasClass("option-nav-mobile-static") ||
-                        $("#sb-navigation > .sb-section").hasClass(
-                          "option-nav-mobile-static"
-                        )
-                      ) {
-                        $("#sb-navigation").addClass("sb-nav--static");
-                      } else {
-                        $("#sb-navigation").removeClass("sb-nav--static");
-                      }
-                    });
-                  });
-                </script>
+                <script src="js/ui.js" type="text/javascript"></script>
+                
               </div>
             </div>
           </div>
@@ -12556,7 +12031,7 @@
                         data-sb-is-link="true"
                         data-sb-type=""
                         data-sb-uuid="5d1a611f-6a69-41f5-8415-d7c9315f1a90"
-                        href="/index#services"
+                        href="index.html#services"
                         rel=" "
                         target=""
                         >View services</a
@@ -13371,15 +12846,15 @@
                                 ></path>
                               </svg>
                               <a
-                                aria-label="Email us at utkarsh@newvista.in"
+                                aria-label="Email us at services@newvista.in"
                                 class="email"
                                 data-component-field="contact"
                                 data-sb-field="email"
                                 data-sb-is-link=""
                                 data-sb-type="email"
                                 data-sb-uuid="5aa3b5e0-8486-4116-9c7a-d69d9eb48949"
-                                href="mailto:utkarsh@newvista.in"
-                                >utkarsh@newvista.in</a
+                                href="mailto:services@newvista.in"
+                                >services@newvista.in</a
                               >
                             </div>
                           </div>
@@ -13807,30 +13282,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="by-b12">
-                    <a
-                      href="https://www.b12.io/ai-web-design/?utm_source=client&utm_medium=footer&utm_campaign=ai-web-design"
-                      rel="nofollow noopener noreferrer"
-                      target="_blank"
-                      >Web design by
-                      <svg
-                        id="b12-logo"
-                        viewBox="0 0 179.8 79.2"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <title>B12</title>
-                        <path
-                          d="M53.9,46a12.87,12.87,0,0,0-4.6-2.9c-2.5-.8-3.2-.9-10.1-.9H28.3V69.5h10c9.2,0,10.5-.2,13.8-2.2s5.4-6.4,5.4-11.3c0-4.2-1.3-7.7-3.6-10M51.6,11.4A9.44,9.44,0,0,0,47.1,9c-2.3-.6-3.5-.6-10-.6H28.2V33.2h11c4.4,0,8-.6,10.2-1.6,3.5-1.5,5.8-5.8,5.8-10.7a12.37,12.37,0,0,0-3.6-9.5M71.8,68.5a16,16,0,0,1-6.1,6.3,19.75,19.75,0,0,1-9,2.8c-1.6.1-4.5.1-8.6.1H0V69.3H6.4a9.59,9.59,0,0,0,4-.5,3.35,3.35,0,0,0,1.5-1.6,5.59,5.59,0,0,0,.7-2.6c0-.6.1-1.6.1-3.3v-45c0-1.5-.1-2.7-.1-3.3a5.36,5.36,0,0,0-.7-2.6c-.7-1.6-2.1-2.1-5.5-2.1H0V0H36.6c3.9,0,6.9.1,9,.1C54,.3,60,2,65.1,5.6A17,17,0,0,1,72.3,20a16.15,16.15,0,0,1-5.4,12.6c-2.8,2.6-4.8,3.6-10.1,5.1,5.4,1.4,6.9,2,10,4,4.9,3,7.8,9,7.8,15.8a23,23,0,0,1-2.8,11"
-                        ></path>
-                        <path
-                          d="M78.5,77.7V69.3h7a12,12,0,0,0,3.9-.4,3.71,3.71,0,0,0,1.4-1.6,5.53,5.53,0,0,0,.7-2.5c0-.6.1-1.6.1-3V29.2H78.5V21.7c10.7-.1,14.1-2.2,16.8-10.4h10V58.5l.1,3.3a19.58,19.58,0,0,0,.1,3,5.73,5.73,0,0,0,.6,2.5c.8,1.6,2,2,5.4,2H118v8.4Z"
-                        ></path>
-                        <path
-                          d="M179.2,64.3c-1.4,9.8-7.4,14.9-17.1,14.9-5.5,0-9.9-1.4-20.3-6.5-3-1.4-4.7-2-6.2-2-3.2,0-5.1,1.9-5.1,5.3v1.6h-7.7c-.1-1.1-.1-2-.1-2.6a33.4,33.4,0,0,1,2.1-11.4c2.5-6.5,6.8-10.6,16.3-15.2q6.45-3.15,9-4.5a24.88,24.88,0,0,0,6.4-4.6,13.54,13.54,0,0,0,3.9-9.2c0-7.7-5.6-12.5-14.6-12.5-7.8,0-12.2,2.8-14,8.9a9,9,0,0,1,4.2-1.1c4.3,0,7.4,3.3,7.4,7.9,0,5.3-3.5,8.8-8.8,8.8-6.5,0-10.8-4.8-10.8-12a19.15,19.15,0,0,1,6.9-14.5c4.9-4.2,10.8-6.1,19.4-6.1,15.9,0,26.7,8.8,26.7,21.9,0,10.9-6.2,17-21,20.9C142,56,140.6,56.5,136,60.4c-2.3,1.9-3.2,3.2-4.2,6.6,3.4-2.8,5.8-3.7,10.5-3.7a27.28,27.28,0,0,1,4.1.3l9.7,1.6a46.32,46.32,0,0,0,6.2.6c7.5,0,10.7-3.3,10.8-11.7H180a100.9,100.9,0,0,1-.8,10.2"
-                        ></path>
-                      </svg>
-                    </a>
-                  </div>
+                  
                 </div>
               </div>
             </div>
